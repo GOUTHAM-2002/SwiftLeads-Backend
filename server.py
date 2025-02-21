@@ -64,7 +64,19 @@ mail.init_app(app)
 # ... existing imports ...
 
 # Update CORS configuration
-cors = CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(
+    app,
+    resources={
+        r"/*": {
+            "origins": ["https://swift-leads-frontend.vercel.app"],
+            "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+            "allow_headers": ["Content-Type", "Authorization"],
+            "supports_credentials": True,
+            "allow_credentials": True,
+            "expose_headers": ["Content-Type", "Authorization"]
+        }
+    }
+)
 
 
 # ... rest of the code ...

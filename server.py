@@ -61,18 +61,13 @@ mail.init_app(app)
 # celery_app = init_celery(app)
 
 # Update CORS configuration
-CORS(
-    app,
-    resources={
-        r"/*": {
-            "origins": ["http://localhost:3000,https://swift-leads-frontend.vercel.app/"],
-            "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-            "allow_headers": ["Content-Type", "Authorization"],
-            "supports_credentials": True,
-        }
-    },
-)
+# ... existing imports ...
 
+# Update CORS configuration
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
+
+
+# ... rest of the code ...
 
 # @app.before_request
 # def before_request():
